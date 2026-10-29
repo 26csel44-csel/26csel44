@@ -1,0 +1,25 @@
+{
+  "name": "26csel44",
+  "version": "1.0.0",
+  "description": "My web development learning journey.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/26csel44-csel/26csel44.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/26csel44-csel/26csel44/issues"
+  },
+  "homepage": "https://github.com/26csel44-csel/26csel44#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "mongodb": "^7.7.0"
+  }
+}
