@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CampusConnect - College Events</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>CampusConnect</h1>
+<p>Discover events. Connect with your campus.</p>
+</header>
+<nav>
+<a href="#events">Upcoming Events</a>
+<a href="#registration">Register</a>
+</nav>
+<main>
+<section id="events">
+<h2>Upcoming College Events</h2>
+<p class="intro">Choose an event and register to participate.</p>
+<div class="event-list">
+<article class="event-card">
+<h3>Tech Fest 2026</h3>
+<p>Explore coding, technology and innovation.</p>
+<p><strong>Date:</strong> 15 November 2026</p>
+<p><strong>Venue:</strong> College Auditorium</p>
+<button type="button" onclick="registerEvent('Tech Fest 2026')">Register Now</button>
+</article>
+<article class="event-card">
+<h3>Cultural Fest 2026</h3>
+<p>Enjoy music, dance and cultural performances.</p>
+<p><strong>Date:</strong> 20 November 2026</p>
+<p><strong>Venue:</strong> College Grounds</p>
+<button type="button" onclick="registerEvent('Cultural Fest 2026')">Register Now</button>
+</article>
+<article class="event-card">
+<h3>Web Development Workshop</h3>
+<p>Learn the basics of creating websites.</p>
+<p><strong>Date:</strong> 25 November 2026</p>
+<p><strong>Venue:</strong> Computer Lab</p>
+<button type="button" onclick="registerEvent('Web Development Workshop')">Register Now</button>
+</article>
+</div>
+</section>
+<section id="registration">
+<h2>Student Registration</h2>
+<p class="intro">Enter your details to register for an event.</p>
+<form id="registrationForm">
+<label for="name">Full Name</label>
+<input type="text" id="name" name="name" placeholder="Enter your full name" minlength="2" maxlength="80" required>
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Enter your email" required>
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" placeholder="10-digit phone number" pattern="[0-9]{10}" maxlength="10" required>
+<label for="event">Select Event</label>
+<select id="event" name="event" required>
+<option value="">Select an event</option>
+<option value="Tech Fest 2026">Tech Fest 2026</option>
+<option value="Cultural Fest 2026">Cultural Fest 2026</option>
+<option value="Web Development Workshop">Web Development Workshop</option>
+</select>
+<button type="submit">Submit Registration</button>
+</form>
+<p id="message"></p>
+</section>
+</main>
+<footer>
+<p>CampusConnect | College Event Registration System</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
