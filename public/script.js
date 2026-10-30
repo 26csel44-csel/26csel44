@@ -1,4 +1,3 @@
-
 const form = document.getElementById("registrationForm");
 const message = document.getElementById("message");
 const eventSelect = document.getElementById("event");
