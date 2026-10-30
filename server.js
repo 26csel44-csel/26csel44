@@ -7,7 +7,18 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const MONGO_URL = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
-const client = new MongoClient(MONGO_URL);
+
+// On the hosting site, the database username and password are kept in
+// separate secret settings (MONGODB_USER and MONGODB_PASSWORD), so they
+// never appear in the code or in the connection link.
+const clientOptions = {};
+if (process.env.MONGODB_USER && process.env.MONGODB_PASSWORD) {
+    clientOptions.auth = {
+        username: process.env.MONGODB_USER,
+        password: process.env.MONGODB_PASSWORD
+    };
+}
+const client = new MongoClient(MONGO_URL, clientOptions);
 
 const allowedEvents = [
     "Tech Fest 2026",
