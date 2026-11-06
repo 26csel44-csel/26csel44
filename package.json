@@ -5,7 +5,7 @@
   "main": "script.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test/auth.test.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "dependencies": {
     "express": "^5.3.0",
     "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.3.0"
   }
 }
