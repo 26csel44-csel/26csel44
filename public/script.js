@@ -56,6 +56,7 @@ method: "POST",
 headers: {
 "Content-Type": "application/json"
 },
+credentials: "same-origin",
 body: JSON.stringify({
 name,
 email,
@@ -80,3 +81,84 @@ error.message || "Unable to connect to the server.",
 );
 }
 });
+
+const loginLink = document.getElementById("loginLink");
+const signupLink = document.getElementById("signupLink");
+const studentMenu = document.getElementById("studentMenu");
+const studentName = document.getElementById("studentName");
+const logoutButton = document.getElementById("logoutButton");
+const accountNote = document.getElementById("accountNote");
+
+function showSignedInStudent(student) {
+    if (loginLink) {
+        loginLink.hidden = true;
+    }
+    if (signupLink) {
+        signupLink.hidden = true;
+    }
+    if (studentMenu) {
+        studentMenu.hidden = false;
+    }
+    if (studentName) {
+        studentName.textContent = student.name;
+    }
+    if (accountNote) {
+        accountNote.hidden = false;
+        accountNote.textContent = "Signed in as " + student.name + " (" + student.email + ").";
+    }
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+
+    if (nameInput && !nameInput.value) {
+        nameInput.value = student.name;
+    }
+    if (emailInput && !emailInput.value) {
+        emailInput.value = student.email;
+    }
+}
+
+async function loadStudent() {
+    try {
+        const response = await fetch("/api/me", {
+            credentials: "same-origin"
+        });
+
+        if (!response.ok) {
+            return;
+        }
+
+        const result = await response.json();
+
+        if (!result.student) {
+            return;
+        }
+
+        showSignedInStudent(result.student);
+    } catch (error) {
+        // The event page still works when the account service is unavailable.
+    }
+}
+
+if (logoutButton) {
+    logoutButton.addEventListener("click", async function () {
+        try {
+            const response = await fetch("/api/logout", {
+                method: "POST",
+                credentials: "same-origin"
+            });
+
+            if (!response.ok) {
+                throw new Error("Could not log out.");
+            }
+
+            window.location.href = "/";
+        } catch (error) {
+            showMessage(error.message || "Could not log out.", "error");
+        }
+    });
+}
+
+if (loginLink) {
+    loadStudent();
+}
