@@ -404,9 +404,6 @@ function createApp(db) {
 }
 
 async function startServer() {
-    // On the hosting site, the database username and password are kept in
-    // separate secret settings (MONGODB_USER and MONGODB_PASSWORD), so they
-    // never appear in the code or in the connection link.
     const mongoUrl = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
     const clientOptions = {};
 
